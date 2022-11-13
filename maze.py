@@ -48,7 +48,7 @@ def podeExpandir(matriz,linha,coluna):
 		return False
 
 
-#Expande o S até o caminho T seja encontrado e fornece o comprimento deste caminhp
+#Expande o S até o caminho T seja encontrado e fornece o comprimento deste caminho
 def expandeS(matriz,source):
     caminho = ""
 
