@@ -60,7 +60,7 @@ def expandeS(matriz,source):
                		matriz[linha][coluna] = "1" #se está no S marca como primeiro visitado 
                		caminho = "1"
                	else:
-               		print("Comprimento: 1") #se achou o target, imprime comprimento 1 e return o destino
+               		print("Comprimento: 1") #se achou o target, imprime comprimento 1 e returna o destino
                		return target
 
                else:
