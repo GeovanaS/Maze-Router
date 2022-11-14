@@ -80,7 +80,7 @@ def expandeS(matriz,source):
                		caminho = str(int(source)+1) 
 
                	else: #se achou o target
-               		print("Comprimento:\n",source)  #imprime o comprimento do caminho
+               		print("Comprimento:",source)  #imprime o comprimento do caminho
                		return target 
 
     return caminho 
