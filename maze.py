@@ -1,3 +1,5 @@
+# Trabalho 2 - Ferramentas de CAD 
+# Geovana Silva da Silveira
 # Algoritmo Maze Router para uma matriz de tamanho 40x40
 
 source = "S" #inicio do caminho
@@ -5,11 +7,11 @@ target = "T" #destino do caminho
 
 #Função utilizada para leitura do arquivo txt de entrada e criação da matriz
 def leMatriz():
-	with open("entrada.txt") as arquivo: #abre arquivo de entrada
+	with open("entrada2.txt") as arquivo: #abre arquivo de entrada
 		matriz = []
 		linhas = arquivo.readlines() #le linhas do arquivo
 		for l in linhas: #percorre as linhas da matriz
-			aux = l.replace(" ","").replace("\n","") #remove espacos
+			aux = l.replace(" ","").replace("\n","") 
 			m = []
 			for c in aux:
 				m.append(c)
@@ -22,7 +24,7 @@ matriz = leMatriz()
 
 #funcao auxiliar para escrever a matriz com a solucao
 def escreveSaida():
-	with open("saida.txt","w") as arquivo:
+	with open("saida2.txt","w") as arquivo:
 		for linha in matriz:
 			for elemento in linha:
 				arquivo.write("{:3}".format(elemento))
@@ -32,17 +34,16 @@ def escreveSaida():
 
 #funcao que verifica se achou o target
 def encontrouAlvo(matriz,linha,coluna):
-	#verifica se achou o "T" nas quatros direcoes 
-    if (matriz[linha-1][coluna]==target or matriz[linha+1][coluna]==target
-    	or matriz[linha][coluna]==target or matriz[linha][coluna+1]==target):
+	#verifica se achou um "T" em alguma das quatros direcoes 
+    if (matriz[linha-1][coluna]==target or matriz[linha+1][coluna]==target or matriz[linha][coluna]==target or matriz[linha][coluna+1]==target):
           return True
     else:
           return False      
 
 #funcao que verifica se pode expandir o caminho
 def podeExpandir(matriz,linha,coluna):
-	if (matriz[linha][coluna]=="0" and matriz[linha][coluna]!="-" 
-		and matriz[linha][coluna]!="X"):
+	#verifica se tem caminho livre para expandir
+	if (matriz[linha][coluna]=="0" and matriz[linha][coluna]!="#" and matriz[linha][coluna]!='-' and matriz[linha][coluna]!="X"):
 		return True
 	else:
 		return False
