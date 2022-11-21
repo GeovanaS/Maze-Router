@@ -7,7 +7,7 @@ target = "T" #destino do caminho
 
 #Função utilizada para leitura do arquivo txt de entrada e criação da matriz
 def leMatriz():
-	with open("entrada2.txt") as arquivo: #abre arquivo de entrada
+	with open("entrada.txt") as arquivo: #abre arquivo de entrada
 		matriz = []
 		linhas = arquivo.readlines() #le linhas do arquivo
 		for l in linhas: #percorre as linhas da matriz
@@ -24,18 +24,17 @@ matriz = leMatriz()
 
 #funcao auxiliar para escrever a matriz com a solucao
 def escreveSaida():
-	with open("saida2.txt","w") as arquivo:
+	with open("saida.txt","w") as arquivo:
 		for linha in matriz:
 			for elemento in linha:
 				arquivo.write("{:3}".format(elemento))
-
 			arquivo.write("\n")
 
 
 #funcao que verifica se achou o target
 def encontrouAlvo(matriz,linha,coluna):
 	#verifica se achou um "T" em alguma das quatros direcoes 
-    if (matriz[linha-1][coluna]==target or matriz[linha+1][coluna]==target or matriz[linha][coluna]==target or matriz[linha][coluna+1]==target):
+    if (matriz[linha-1][coluna]==target or matriz[linha+1][coluna]==target or matriz[linha][coluna-1]==target or matriz[linha][coluna+1]==target):
           return True
     else:
           return False      
@@ -88,12 +87,13 @@ def expandeS(matriz,source):
 
 
 def main():
-	caminho = expandeS(matriz,source)
-	while(caminho!=target): #enquanto o caminho for diferente do target expande o caminho
+	caminho=source #inicia o caminho pelo S
+	while(caminho!=target): #enquanto o caminho for diferente do target(T) expande o caminho
 		caminho = expandeS(matriz,caminho)
 
 	escreveSaida() #cria arquivo txt de saida
 
 
 main()
+
 
