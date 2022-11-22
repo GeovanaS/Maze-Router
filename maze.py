@@ -7,7 +7,7 @@ target = "T" #destino do caminho
 
 #Função utilizada para leitura do arquivo txt de entrada e criação da matriz
 def leMatriz():
-	with open("entrada.txt") as arquivo: #abre arquivo de entrada
+	with open("entrada2.txt") as arquivo: #abre arquivo de entrada
 		matriz = []
 		linhas = arquivo.readlines() #le linhas do arquivo
 		for l in linhas: #percorre as linhas da matriz
@@ -56,32 +56,32 @@ def expandeS(matriz,source):
     	for coluna in range (0,39): #percorre as 40 colunas da matriz
             if matriz[linha][coluna] == source: 
                if source =="S":  #verifica se matriz esta no ponto inicial do caminho
-               	if(not(encontrouAlvo(matriz,linha,coluna))): 
-               		matriz[linha][coluna] = "1" #se está no S marca como primeiro visitado 
+               	if(not(encontrouAlvo(matriz,linha,coluna))): #Se o T não estiver na vertical/horizontal 
+               		matriz[linha][coluna] = "1" #marca S como primeiro visitado 
                		caminho = "1"
                	else:
-               		print("Comprimento: 1") #se achou o target, imprime comprimento 1 
-               		return target
+               		print("Comprimento: 1") #se achou o target na vertical/horizontal, imprime comprimento 1 
+               		return target #retorna T
 
-               else:
+               else: #se nao esta no S
                	if(not(encontrouAlvo(matriz,linha,coluna))): #se ainda nao achou target
                		if(podeExpandir(matriz,linha-1,coluna)): #verifica se pode expandir para cima
-               				matriz[linha-1][coluna] = str(int(source)+1) #move para cima
+               				matriz[linha-1][coluna] = str(int(source)+1) #expande para cima
 
                		if(podeExpandir(matriz,linha+1,coluna)): #verifica se pode expandir para baixo
-               				matriz[linha+1][coluna] = str(int(source)+1) #move para  baixo
+               				matriz[linha+1][coluna] = str(int(source)+1) #expande para  baixo
 
                		if(podeExpandir(matriz,linha,coluna-1)): #verifica se pode expandir para esquerda
-               				matriz[linha][coluna-1] = str(int(source)+1) #move para esquerda 
+               				matriz[linha][coluna-1] = str(int(source)+1) #expande para esquerda 
 
                		if(podeExpandir(matriz,linha,coluna+1)): #verifica se pode expandir para direita
-               				matriz[linha][coluna+1] = str(int(source)+1) #move para direita
+               				matriz[linha][coluna+1] = str(int(source)+1) #expande para direita
 
-               		caminho = str(int(source)+1) 
+               		caminho = str(int(source)+1) #recebe caminho percorrido
 
                	else: #se achou o target
                		print("Comprimento:",source)  #imprime o comprimento do caminho
-               		return target 
+               		return target #retorna T
 
     return caminho 
 
@@ -95,5 +95,4 @@ def main():
 
 
 main()
-
 
