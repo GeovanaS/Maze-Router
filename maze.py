@@ -11,7 +11,7 @@ def leMatriz():
 		matriz = []
 		linhas = arquivo.readlines() #le linhas do arquivo
 		for l in linhas: #percorre as linhas da matriz
-			aux = l.replace(" ","").replace("\n","") 
+			aux = l.replace(" ","") 
 			m = []
 			for c in aux:
 				m.append(c)
