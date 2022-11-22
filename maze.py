@@ -56,7 +56,7 @@ def expandeS(matriz,source):
     	for coluna in range (0,39): #percorre as 40 colunas da matriz
             if matriz[linha][coluna] == source: 
                if source =="S":  #verifica se matriz esta no ponto inicial do caminho
-               	if(not(encontrouAlvo(matriz,linha,coluna))): #Se o T não estiver na vertical/horizontal 
+               	if((encontrouAlvo(matriz,linha,coluna))==False): #Se o T não estiver na vertical/horizontal 
                		matriz[linha][coluna] = "1" #marca S como primeiro visitado 
                		caminho = "1"
                	else:
@@ -64,7 +64,7 @@ def expandeS(matriz,source):
                		return target #retorna T
 
                else: #se nao esta no S
-               	if(not(encontrouAlvo(matriz,linha,coluna))): #se ainda nao achou target
+               	if((encontrouAlvo(matriz,linha,coluna))==False): #se ainda nao achou target
                		if(podeExpandir(matriz,linha-1,coluna)): #verifica se pode expandir para cima
                				matriz[linha-1][coluna] = str(int(source)+1) #expande para cima
 
