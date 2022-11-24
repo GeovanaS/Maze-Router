@@ -39,14 +39,14 @@ def podeExpandir(matriz,linha,coluna):
         return False
 
 # Função que expande o S até o caminho final T e fornece o comprimento do caminho percorrido
-def ExpandeS(matriz,source):
+def ExpandeS(matriz,estadoAtual):
     caminho = ""
     
     for linha in range(0,39): #percorre as 40 linhas da matriz
         for coluna in range(0,39): #percorre as 40 colunas da matriz
-            if(matriz[linha][coluna]==source): #verifica se a matriz está no estado atual
+            if(matriz[linha][coluna]==estadoAtual): #verifica se a matriz está no estado atual
                 #verifica se a matriz está no ponto inicial
-                if source == "S": 
+                if estadoAtual == "S": 
                     #Se o T não estiver na vertical/horizontal
                     if((encontrouAlvo(matriz,linha,coluna))==False):
                         #Marca S como primeiro visitado
@@ -60,22 +60,22 @@ def ExpandeS(matriz,source):
                     if((encontrouAlvo(matriz,linha,coluna))==False): #se ainda nao achou o target
                         #Verifica se pode expandir para cima
                         if(podeExpandir(matriz,linha-1,coluna)):
-                            matriz[linha-1][coluna] = str(int(source)+1) #expande para cima
+                            matriz[linha-1][coluna] = str(int(estadoAtual)+1) #expande para cima
                         #Verifica se pode expandir para baixo
                         if(podeExpandir(matriz,linha+1,coluna)):
-                            matriz[linha+1][coluna]= str(int(source)+1) #expande para baixo
+                            matriz[linha+1][coluna]= str(int(estadoAtual)+1) #expande para baixo
                         #Verifica se pode expandir para esquerda
                         if(podeExpandir(matriz,linha,coluna-1)):
-                            matriz[linha][coluna-1] = str(int(source)+1) #expande para esquerda
+                            matriz[linha][coluna-1] = str(int(estadoAtual)+1) #expande para esquerda
                         #Verifica se pode expandir para direita
                         if(podeExpandir(matriz,linha,coluna+1)):
-                            matriz[linha][coluna+1] = str(int(source)+1) #expande para direita
+                            matriz[linha][coluna+1] = str(int(estadoAtual)+1) #expande para direita
                         
                         #recebe caminho percorrido
-                        caminho = str(int(source)+1) 
+                        caminho = str(int(estadoAtual)+1) 
                     else: #Se achou target    
                         #imprime o comprimento do caminho percorrido
-                        print("Comprimento:",source)
+                        print("Comprimento:",estadoAtual)
                         return target #retorna T
 
     return caminho                                        
