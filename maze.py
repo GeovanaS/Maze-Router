@@ -44,7 +44,7 @@ def ExpandeS(matriz,source):
     
     for linha in range(0,39): #percorre as 40 linhas da matriz
         for coluna in range(0,39): #percorre as 40 colunas da matriz
-            if(matriz[linha][coluna]==source): 
+            if(matriz[linha][coluna]==source): #verifica se a matriz está no estado atual
                 #verifica se a matriz está no ponto inicial
                 if source == "S": 
                     #Se o T não estiver na vertical/horizontal
